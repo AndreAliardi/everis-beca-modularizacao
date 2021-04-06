@@ -10,7 +10,7 @@ import com.niemietz.everis.beca.core.Session
 import br.everis.login.events.LoginEvents
 import br.everis.login.events.LoginInteractor
 import com.niemietz.everis.beca.modularizacao.login.states.LoginStates
-import com.niemietz.everis.beca.modularizacao.login.repository.LoginRepository
+import br.everis.login.repository.LoginRepository
 import br.everis.login.model.AuthenticateRequest
 import br.everis.login.model.AuthenticateResponseContent
 import br.everis.login.model.GETSessionRequest
@@ -23,7 +23,7 @@ import kotlin.coroutines.CoroutineContext
 
 class LoginViewModel(
     private val context: Context,
-    private var repository: LoginRepository,
+    private var repository: br.everis.login.repository.LoginRepository,
     private val checkInternetConnection: Boolean = true
 ): ViewModel() {
     private val job: Job = Job()

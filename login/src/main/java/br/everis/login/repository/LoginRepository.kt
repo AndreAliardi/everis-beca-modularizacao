@@ -1,4 +1,4 @@
-package com.niemietz.everis.beca.modularizacao.login.repository
+package br.everis.login.repository
 
 import br.everis.login.interfaces.LoginAPI
 import br.everis.login.model.AuthenticateRequest
