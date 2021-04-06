@@ -1,9 +1,8 @@
-package com.niemietz.everis.beca.modularizacao.login.ui.viewmodel
+package br.everis.login.ui.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import br.everis.login.repository.LoginRepository
 import java.lang.IllegalArgumentException
 
 class LoginViewModelFactory(
@@ -14,8 +13,12 @@ class LoginViewModelFactory(
     override fun <T : ViewModel> create(modelClass: Class<T>): T =
         with(modelClass) {
             when {
-                isAssignableFrom(LoginViewModel::class.java) ->
-                    LoginViewModel(context, repository, checkInternetConnection)
+                isAssignableFrom(br.everis.login.ui.viewmodel.LoginViewModel::class.java) ->
+                    br.everis.login.ui.viewmodel.LoginViewModel(
+                        context,
+                        repository,
+                        checkInternetConnection
+                    )
 
                 else ->
                     throw IllegalArgumentException("Unkown ViewModel class: ${modelClass.name}")

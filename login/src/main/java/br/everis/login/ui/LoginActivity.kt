@@ -1,4 +1,4 @@
-package com.niemietz.everis.beca.modularizacao.login.ui
+package br.everis.login.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,16 +13,7 @@ import com.niemietz.everis.beca.core.BackendClient
 import br.everis.login.constants.LoginConstants.EXTRA_ERROR_KEY
 import br.everis.login.constants.LoginConstants.EXTRA_RESULT_KEY
 import br.everis.login.constants.LoginConstants.LOGIN_RESULT_CODE
-import br.everis.login.textwatcher.LoginTextWatcher
-import br.everis.login.events.LoginEvents
-import br.everis.login.events.LoginInteractor
-import br.everis.login.model.KeyboardItem
-import br.everis.login.states.LoginStates
 import com.niemietz.everis.beca.modularizacao.R
-import br.everis.login.interfaces.LoginAPI
-import br.everis.login.repository.LoginRepository
-import com.niemietz.everis.beca.modularizacao.login.ui.viewmodel.LoginViewModel
-import com.niemietz.everis.beca.modularizacao.login.ui.viewmodel.LoginViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
     private val etPassword: AppCompatEditText by lazy { findViewById(R.id.et_password) }
@@ -36,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
     private val clLoadingBackground: ConstraintLayout by lazy { findViewById(R.id.cl_loading_background) }
     private val gpLoading: Group by lazy { findViewById(R.id.gp_loading) }
 
-    private lateinit var viewModel: LoginViewModel
+    private lateinit var viewModel: br.everis.login.ui.viewmodel.LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,11 +49,11 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(
             this,
-            LoginViewModelFactory(
+            br.everis.login.ui.viewmodel.LoginViewModelFactory(
                 this,
                 repository
             )
-        ).get(LoginViewModel::class.java)
+        ).get(br.everis.login.ui.viewmodel.LoginViewModel::class.java)
     }
 
     private fun initEventsObservers() {
