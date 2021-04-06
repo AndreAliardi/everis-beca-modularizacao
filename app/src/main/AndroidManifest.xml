@@ -23,7 +23,7 @@
         <activity android:name="com.niemietz.everis.beca.modularizacao.br.everis.login.ui.LoginActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.niemietz.everis.beca.modularizacao.ui.LoginOkActivity"
+        <activity android:name="com.niemietz.everis.beca.modularizacao.br.everis.ui.LoginOkActivity"
             android:screenOrientation="portrait">
         </activity>
     </application>

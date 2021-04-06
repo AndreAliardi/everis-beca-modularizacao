@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == LOGIN_REQUEST_CODE && resultCode == br.everis.login.constants.LoginConstants.LOGIN_RESULT_CODE) {
             val loginOk = data?.extras?.getBoolean(br.everis.login.constants.LoginConstants.EXTRA_RESULT_KEY)
             if (loginOk == true) {
-                val loginOkIntent = Intent(this, LoginOkActivity::class.java)
+                val loginOkIntent = Intent(this, br.everis.ui.LoginOkActivity::class.java)
                 startActivity(loginOkIntent)
             } else {
                 onError(
