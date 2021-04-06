@@ -9,7 +9,7 @@ import com.niemietz.everis.beca.core.InternetChecker.isConnected2Internet
 import com.niemietz.everis.beca.core.Session
 import br.everis.login.events.LoginEvents
 import br.everis.login.events.LoginInteractor
-import com.niemietz.everis.beca.modularizacao.login.states.LoginStates
+import br.everis.login.states.LoginStates
 import br.everis.login.repository.LoginRepository
 import br.everis.login.model.AuthenticateRequest
 import br.everis.login.model.AuthenticateResponseContent
@@ -30,7 +30,7 @@ class LoginViewModel(
     private val currentJob: CoroutineContext =
         Dispatchers.Main + job
     val events = MutableLiveData<br.everis.login.events.LoginEvents>()
-    val states = MutableLiveData<LoginStates>()
+    val states = MutableLiveData<br.everis.login.states.LoginStates>()
 
     fun interact(interaction: br.everis.login.events.LoginInteractor) {
         when (interaction) {
@@ -58,11 +58,11 @@ class LoginViewModel(
 
                     setCoreSession(response.sessionId)
 
-                    states.value = LoginStates.GetSessionResult(
+                    states.value = br.everis.login.states.LoginStates.GetSessionResult(
                         response.keyboard
                     )
                 } catch (ex: Exception) {
-                    states.value = LoginStates.GetSessionError(ex)
+                    states.value = br.everis.login.states.LoginStates.GetSessionError(ex)
                 }
             }
         } else {
@@ -88,14 +88,14 @@ class LoginViewModel(
 
                         setCoreUserContent(response.content)
 
-                        states.value = LoginStates.AuthenticateResult(
+                        states.value = br.everis.login.states.LoginStates.AuthenticateResult(
                             response.result
                         )
                     } ?: run {
                         events.value = br.everis.login.events.LoginEvents.NoSession
                     }
                 } catch (ex: Exception) {
-                    states.value = LoginStates.GetSessionError(ex)
+                    states.value = br.everis.login.states.LoginStates.GetSessionError(ex)
                 }
             }
         } else {

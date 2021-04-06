@@ -17,7 +17,7 @@ import com.niemietz.everis.beca.core.com.niemietz.everis.beca.modularizacao.logi
 import br.everis.login.events.LoginEvents
 import br.everis.login.events.LoginInteractor
 import br.everis.login.model.KeyboardItem
-import com.niemietz.everis.beca.modularizacao.login.states.LoginStates
+import br.everis.login.states.LoginStates
 import com.niemietz.everis.beca.modularizacao.R
 import br.everis.login.interfaces.LoginAPI
 import br.everis.login.repository.LoginRepository
@@ -81,11 +81,11 @@ class LoginActivity : AppCompatActivity() {
     private fun initStatesObservers() {
         viewModel.states.observe(this, {
             when(it) {
-                is LoginStates.GetSessionResult -> setKeyboard(it.keyboard)
-                is LoginStates.GetSessionError -> onError(it.exception)
+                is br.everis.login.states.LoginStates.GetSessionResult -> setKeyboard(it.keyboard)
+                is br.everis.login.states.LoginStates.GetSessionError -> onError(it.exception)
 
-                is LoginStates.AuthenticateResult -> afterLogin(it.result)
-                is LoginStates.AuthenticateError -> onError(it.exception)
+                is br.everis.login.states.LoginStates.AuthenticateResult -> afterLogin(it.result)
+                is br.everis.login.states.LoginStates.AuthenticateError -> onError(it.exception)
             }
         })
     }
