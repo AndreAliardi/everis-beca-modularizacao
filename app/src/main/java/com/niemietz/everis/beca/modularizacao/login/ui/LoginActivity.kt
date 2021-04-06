@@ -14,8 +14,8 @@ import br.everis.login.constants.LoginConstants.EXTRA_ERROR_KEY
 import br.everis.login.constants.LoginConstants.EXTRA_RESULT_KEY
 import br.everis.login.constants.LoginConstants.LOGIN_RESULT_CODE
 import com.niemietz.everis.beca.core.com.niemietz.everis.beca.modularizacao.login.textwatcher.LoginTextWatcher
-import com.niemietz.everis.beca.modularizacao.login.events.LoginEvents
-import com.niemietz.everis.beca.modularizacao.login.events.LoginInteractor
+import br.everis.login.events.LoginEvents
+import br.everis.login.events.LoginInteractor
 import com.niemietz.everis.beca.modularizacao.login.model.KeyboardItem
 import com.niemietz.everis.beca.modularizacao.login.states.LoginStates
 import com.niemietz.everis.beca.modularizacao.R
@@ -68,8 +68,8 @@ class LoginActivity : AppCompatActivity() {
     private fun initEventsObservers() {
         viewModel.events.observe(this, {
             when(it) {
-                is LoginEvents.StartLoading -> showLoading(true)
-                is LoginEvents.NoInternet -> Toast.makeText(
+                is br.everis.login.events.LoginEvents.StartLoading -> showLoading(true)
+                is br.everis.login.events.LoginEvents.NoInternet -> Toast.makeText(
                     this,
                     CHECK_YOUR_CONNECTION_WARNING,
                     Toast.LENGTH_LONG
@@ -114,11 +114,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun getKeyboard() {
-        viewModel.interact(LoginInteractor.GetSession)
+        viewModel.interact(br.everis.login.events.LoginInteractor.GetSession)
     }
 
     private fun realizeLogin(password: String) {
-        viewModel.interact(LoginInteractor.Authenticate(password))
+        viewModel.interact(br.everis.login.events.LoginInteractor.Authenticate(password))
     }
 
     private fun setKeyboard(keyboard: ArrayList<KeyboardItem>) {
