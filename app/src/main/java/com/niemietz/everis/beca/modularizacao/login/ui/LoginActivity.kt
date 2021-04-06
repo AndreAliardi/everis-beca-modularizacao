@@ -13,7 +13,7 @@ import com.niemietz.everis.beca.core.BackendClient
 import br.everis.login.constants.LoginConstants.EXTRA_ERROR_KEY
 import br.everis.login.constants.LoginConstants.EXTRA_RESULT_KEY
 import br.everis.login.constants.LoginConstants.LOGIN_RESULT_CODE
-import com.niemietz.everis.beca.core.com.niemietz.everis.beca.modularizacao.login.textwatcher.LoginTextWatcher
+import br.everis.login.textwatcher.LoginTextWatcher
 import br.everis.login.events.LoginEvents
 import br.everis.login.events.LoginInteractor
 import br.everis.login.model.KeyboardItem
@@ -99,7 +99,11 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        this.etPassword.addTextChangedListener(LoginTextWatcher(this.etPassword))
+        this.etPassword.addTextChangedListener(
+            br.everis.login.textwatcher.LoginTextWatcher(
+                this.etPassword
+            )
+        )
 
         this.clLoadingBackground.setOnClickListener {
             // Keep it to make everything unclickable while loading
