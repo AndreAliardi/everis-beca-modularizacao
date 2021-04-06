@@ -19,7 +19,7 @@ import br.everis.login.events.LoginInteractor
 import com.niemietz.everis.beca.modularizacao.login.model.KeyboardItem
 import com.niemietz.everis.beca.modularizacao.login.states.LoginStates
 import com.niemietz.everis.beca.modularizacao.R
-import com.niemietz.everis.beca.modularizacao.login.interfaces.LoginAPI
+import br.everis.login.interfaces.LoginAPI
 import com.niemietz.everis.beca.modularizacao.login.repository.LoginRepository
 import com.niemietz.everis.beca.modularizacao.login.ui.viewmodel.LoginViewModel
 import com.niemietz.everis.beca.modularizacao.login.ui.viewmodel.LoginViewModelFactory
@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        val api = BackendClient.api(LoginAPI::class.java)
+        val api = BackendClient.api(br.everis.login.interfaces.LoginAPI::class.java)
         val repository = LoginRepository(api)
 
         viewModel = ViewModelProvider(
