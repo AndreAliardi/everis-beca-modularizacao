@@ -1,4 +1,4 @@
-package br.everis.ui
+package com.niemietz.everis.beca.core.com.niemietz.everis.beca.modularizacao.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
